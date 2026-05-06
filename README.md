@@ -51,6 +51,8 @@ bin/kafka-storage.sh format --standalone -t $KAFKA_CLUSTER_ID -c config/server.p
 bin/kafka-server-start.sh config/server.properties
 ```
 
+- Em outro terminal onde ta rodando kafka, rodar esses dois comandos
+
 ```bash
 bin/kafka-topics.sh --create --topic telemetria-bruta --bootstrap-server localhost:9092
 bin/kafka-topics.sh --create --topic eventos-frota --bootstrap-server localhost:9092
@@ -71,13 +73,7 @@ source venv/bin/activate
 - Instala as dependências
 
 ```bash
-pip3 install confluent-kafka grpcio grpcio-tools
-```
-
-- Compilar
-
-```bash
-python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. proto/fleet.proto
+pip install flask requests confluent-kafka
 ```
 
 ```bash
