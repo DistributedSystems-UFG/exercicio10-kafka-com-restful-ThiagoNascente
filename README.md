@@ -2,7 +2,7 @@
 
 - 5 máquinas t3-small (aws)
 - Todas compartilhando a pasta /mnt/efs/fs1
-- Portas 9092, 50051
+- Portas 9092, 50051, 5000
 
 ### Maquina 1
 
@@ -54,6 +54,10 @@ bin/kafka-server-start.sh config/server.properties
 - Em outro terminal onde ta rodando kafka, rodar esses dois comandos
 
 ```bash
+cd kafka_2.13-4.2.0/
+```
+
+```bash
 bin/kafka-topics.sh --create --topic telemetria-bruta --bootstrap-server localhost:9092
 bin/kafka-topics.sh --create --topic eventos-frota --bootstrap-server localhost:9092
 ```
@@ -97,5 +101,3 @@ python 1_sensor.py
 ```bash
 python 4_client.py
 ```
-
-
